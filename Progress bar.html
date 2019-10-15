@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Homework #2 Prokhorova</title>   
+    <!-- 3. Имеем следующий код, нужно создать класс по управлению прогрес баром. Класс должен иметь функционал изменения цвета, ширины прогрес бара.
+    Реализовать три кнопки и один инпут 1)Увеличивает каждый раз ширину на 100px 2)Сбрасывает ширину до 0px 3)изменят цвет на тот который ввели в инпуте 4 балла -->
+    <style>
+        .container {
+            margin: 20px;
+        }
+        .bar {
+            transition: 5s;
+            width: 100px;
+            height: 20px;
+            background: red;
+            border: 1px solid black;
+            margin-bottom: 20px;
+        }
+        .bar:hover {
+            width: 500px;
+            background: yellow;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class='bar' id="bar"></div>
+        <button onclick="bar.changeWidth()">Increase the width on 100px</button>
+        <button onclick="bar.zeroWidth()">Reset width to 0px</button>
+        <input type="text" name="color" id="color">
+        <button onclick="bar.changeBackground()">Click to change color</button>
+    </div>
+    <script>
+        function css_getClass(name) {
+            var rules = {};
+            for (var i = 0; i < document.styleSheets.length; ++i) {
+                var cssRules = document.styleSheets[i].cssRules;
+                for (var j = 0; j < cssRules.length; ++j)
+                    rules[cssRules[j].selectorText] = cssRules[j];
+            }
+            return rules[name];
+        }
+
+        class ProgressBar {
+            constructor() {
+                this.elem = document.getElementById("bar");
+                this.a = 500;
+            }
+            
+            changeWidth() {
+                // console.log(this.a);
+                this.a += 100;
+                // console.log(this.a);
+                this.elem.onmouseover = () => {
+                    this.elem.style.width = `${this.a}px`;
+                    // console.log(this.elem.style.width);
+                }
+
+                this.elem.onmouseout = () => {
+                    this.elem.style.width = `100px`;
+                    // console.log(this.elem.style.width);
+                }
+            }
+
+            zeroWidth() {
+                this.elem.style.width = `0px`;
+                this.a = 0;
+                //console.log(this.elem.style.width);
+            }
+
+            changeBackground() {
+                let color = document.getElementById("color").value;
+                css_getClass('.bar').style.background = color;
+            }
+        }
+
+        var bar = new ProgressBar();
+    </script>
+</body>
+</html>

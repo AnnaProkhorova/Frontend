@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+	<title>Homework #1 Prokhorova Anna</title>
+
+    <script>
+		const MIN_PASS_LENGTH = 11;
+        function validation(form) {
+			let error = false;
+			let email = form.email.value;
+			let password = form.password.value;
+			let confirmation = form.confirmation.value;
+			let email_inv = document.getElementById("email_inv");
+			let password_inv = document.getElementById("password_inv");
+			let confirmation_inv = document.getElementById("confirmation_inv");
+			let pattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+			if (email == "" || email == " ") {
+				error = "You didn't enter email";
+				email_inv.innerHTML = `<span>${error}</span>`;
+			}
+			if (!pattern.test(email)) {
+				error = "Your email isn't valid";
+				email_inv.innerHTML = `<span>${error}</span>`;
+			}
+			if (password === "" || password === " ") {
+				error = "You didn't enter password";
+				password_inv.innerHTML = `<span>${error}</span>`;
+				document.getElementById("password").style.border = "1px solid red";
+			}
+            if (password.length < MIN_PASS_LENGTH) {
+				error = `Password is too short. You should use ${MIN_PASS_LENGTH} symbols`;
+				password_inv.innerHTML = `<span>${error}</span>`;
+				document.getElementById("password").style.border = "1px solid red";
+			}
+            if (password !== confirmation) {
+				error = "Passwords don't match";
+				confirmation_inv.innerHTML = `<span>${error}</span>`;
+				document.getElementById("confirmation").style.border = "1px solid red";
+			}
+			
+			if(!error) 
+				document.location.reload(true);
+		}
+    </script>
+</head>
+<body>
+	<form action="" method="post" name="test" id="form">
+		<h1>Registration form</h1>
+		<label>
+			<input type="email" name="email" placeholder="Email" id="email">
+			<div class="invalid-input" id="email_inv"></div>
+		</label>
+		<br>
+		<label>
+			<input type="password" name="password" placeholder="Password" id="password">
+			<div class="invalid-input" id="password_inv"></div>
+		</label>
+		<br>
+		<label>
+			<input type="password" name="confirmation" placeholder="Confirm password" id="confirmation">
+			<div class="invalid-input" id="confirmation_inv"></div>
+		</label>
+		<br>
+		<div>
+			<input type="button" onclick="validation(document.getElementById('form'))" name="submit" value="Register">
+		</div>
+	</form>
+</body>
+</html>

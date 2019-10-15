@@ -1,0 +1,48 @@
+body {
+	margin: 0px;
+	padding: 0px;
+}
+#form {
+	width: 500px;
+	min-height: 100px;
+	margin: auto;
+	font-family: 'Poppins', sans-serif;
+	color: #333333;
+	font-size: 14px;
+	
+}
+h1 {
+	text-align: center;
+	font-size: 30px;
+	font-weight: bold;
+}
+label input {
+	width: 500px;
+	height: 30px;
+	border: 1px solid #bbbbbb;
+	border-radius: 3px;
+	margin-bottom: 15px;
+	outline: none;
+}
+div input {
+	background: #0077cc;
+	width: 200px;
+	height: 40px;
+	color: white;
+	border: 1px solid #bbbbbb;
+	border-radius: 10px;
+	float: left;
+	outline: none;
+}
+
+.invalid-input {
+	margin-top: -10px;
+	color: red;
+	font-size: 80%;
+}
+input:valid {
+	border-color: green;
+}
+input:invalid {
+	border-color: red;
+}

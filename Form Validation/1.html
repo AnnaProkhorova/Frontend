@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+	<title>Homework #2 Prokhorova Anna</title>
+	<style>
+	body {
+		margin: 0px;
+		padding: 0px;
+	}
+	#form {
+		width: 500px;
+		min-height: 200px;
+		margin: auto;
+		font-family: 'Poppins', sans-serif;
+		color: #333333;
+		font-size: 14px;
+	}
+	h1 {
+		text-align: center;
+		font-size: 30px;
+		font-weight: bold;
+	}
+	input {
+		width: 500px;
+		height: 30px;
+		border: 1px solid #bbbbbb;
+		border-radius: 3px;
+		outline: none;
+	}
+	input[type=button] {
+		background: #0077cc;
+		width: 200px;
+		height: 40px;
+		color: white;
+		border: 1px solid #bbbbbb;
+		border-radius: 10px;
+		float: left;
+		margin: 5px 25px;
+		outline: none;
+	}
+	.invalid-input {
+		margin-top: 10px; 
+		color: red;
+		font-size: 80%;
+	}
+	input:valid {
+		border-color: green;
+	}
+	input:invalid {
+		border-color: red;
+	}
+	.invisible {
+		display: none;
+	}
+	div {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+	</style>
+</head>
+<body>
+	<form action="" method="post" name="test" id="form">
+		<h1>Registration form</h1>
+			<input type="email" name="email" placeholder="Email" id="email">
+			<div class="invalid-input" id="email_inv"></div>
+		
+			<input type="password" name="password" placeholder="Password" id="password">
+			<div class="invalid-input" id="password_inv"></div>
+
+			<div class="invalid-input" id="confirmation_inv"></div>
+
+			<div id="parentDiv"></div>
+
+			<div id="btn">
+				<input type="button" onclick="createConfirm()" name="submit" value="Registration">
+				<input type="button" onclick="validation(document.getElementById('form'))" name="submit" value="Entrance">
+			</div>
+	</form>
+
+	<script>
+		const MIN_PASS_LENGTH = 11;
+        function validation2(form) {
+			let error = false;
+			let email = form.email.value;
+			let password = form.password.value;
+			let confirmation = form.confirmation.value;
+			let email_inv = document.getElementById("email_inv");
+			let password_inv = document.getElementById("password_inv");
+			let confirmation_inv = document.getElementById("confirmation_inv");
+			let pattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+			let points = email.split(".");
+			if (email == "" || email == " ") {
+				error = "You didn't enter email";
+				email_inv.innerHTML = `<span>${error}</span>`;
+				document.getElementById("email").style.border = "1px solid red";
+			}
+			if (!pattern.test(email)) {
+				error = "Your email isn't valid";
+				email_inv.innerHTML = `<span>${error}</span>`;
+				document.getElementById("email").style.border = "1px solid red";
+			}
+			if (points.length > 2) {
+				error = "You should use only one point";
+				email_inv.innerHTML = `<span>${error}</span>`;
+				document.getElementById("email").style.border = "1px solid red";
+			}
+			if (password === "" || password === " ") {
+				error = "You didn't enter password";
+				password_inv.innerHTML = `<span>${error}</span>`;
+				document.getElementById("password").style.border = "1px solid red";
+			}
+            if (password.length < MIN_PASS_LENGTH) {
+				error = `Password is too short. You should use ${MIN_PASS_LENGTH} symbols`;
+				password_inv.innerHTML = `<span>${error}</span>`;
+				document.getElementById("password").style.border = "1px solid red";
+			}
+            if (password !== confirmation) {
+				error = "Passwords don't match";
+				confirmation_inv.innerHTML = `<span>${error}</span>`;
+				document.getElementById("confirmation").style.border = "1px solid red";
+			}		
+			if(!error) 
+				document.location.reload(true);
+		}
+		function createConfirm() {
+			document.getElementById("btn").style.display = "none";
+ 			let input  = document.createElement("input");
+ 			input.setAttribute("id", "confirmation");
+			input.setAttribute("placeholder", "Confirmation");
+			input.setAttribute("type", "password"); 
+			let buttonGo = document.createElement("input");
+			buttonGo.setAttribute("id", "go");
+			buttonGo.setAttribute("value", "Registration");
+			buttonGo.setAttribute("type", "button");
+			buttonGo.setAttribute("onclick", "validation2(document.getElementById('form'))");  
+ 			let parent = document.getElementById("parentDiv");
+			parent.appendChild(input);
+			parent.appendChild(buttonGo);
+ 			let div = document.getElementById("parentDiv");
+			// if (div.childNodes.length > 2) {
+			// 	div.removeChild(input);
+			// }
+		}
+	
+		function validation(form) {
+			let error = false;
+			let email = form.email.value;
+			let password = form.password.value;
+			let email_inv = document.getElementById("email_inv");
+			let password_inv = document.getElementById("password_inv");
+			let pattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+			let points = email.split(".");
+			if (email == "" || email == " ") {
+				error = "You didn't enter email";
+				email_inv.innerHTML = `<span>${error}</span>`;
+				document.getElementById("email").style.border = "1px solid red";
+			}
+			if (!pattern.test(email)) {
+				error = "Your email isn't valid";
+				email_inv.innerHTML = `<span>${error}</span>`;
+				document.getElementById("email").style.border = "1px solid red";
+			}
+			if (points.length > 2) {
+				error = "You should use only one point";
+				email_inv.innerHTML = `<span>${error}</span>`;
+				document.getElementById("email").style.border = "1px solid red";
+			}
+			if (password === "" || password === " ") {
+				error = "You didn't enter password";
+				password_inv.innerHTML = `<span>${error}</span>`;
+				document.getElementById("password").style.border = "1px solid red";
+			}
+            if (password.length < MIN_PASS_LENGTH) {
+				error = `Password is too short. You should use ${MIN_PASS_LENGTH} symbols`;
+				password_inv.innerHTML = `<span>${error}</span>`;
+				document.getElementById("password").style.border = "1px solid red";
+			}
+			if(!error) 
+				document.location.reload(true);
+		}
+
+    </script>
+</body>
+</html>

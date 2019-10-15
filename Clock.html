@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Homework #4 Prokhorova</title>
+</head>
+<body onload="startTime()">
+    <p id="digits"></p>
+
+    <script>
+            function startTime() {
+                var time = new Date();
+                var hours = time.getHours();
+                var minutes = time.getMinutes();
+                var seconds = time.getSeconds();
+    
+                minutes = checkTime(minutes);
+                seconds = checkTime(seconds);
+                document.getElementById('digits').innerHTML= hours + ":" + minutes + ":" + seconds;
+                timer = setInterval('startTime()',500);
+                }
+            function checkTime(i) {
+                if (i < 10) {
+                    i= "0" + i;
+                }
+            return i;
+            }
+        </script>
+</body>
+</html>
