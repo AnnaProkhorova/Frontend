@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Image File Uploader</title>
+</head>
+<body>
+
+    <div>
+        <h1 class="title">Cat-o-Gram</h1>
+        <p class="sub_title">You can upload your favorite images</p>
+        <input type="file" id="uploader" multiple accept="image/*" style="display: none">
+        <label for="uploader" class="removeButton">Select a file ...</label>
+    </div>
+    <ul class="images"></ul>
+
+<script src="js/removeImage.js"></script>
+<script src="js/displayImages.js"></script>
+<script src="js/editName.js"></script>
+<script src="js/uploadImages.js"></script>
+
+</body>
+</html>

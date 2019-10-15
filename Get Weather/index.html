@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Lesson #2</title>
+</head>
+<body>
+
+    <div id="searchWeather">
+        <div class="weather-details">
+            <ul>
+                <li id="cityLocation">-</li>
+                <li id="humidity">-</li>
+                <li id="pressure">-</li>
+                <li id="temperature">-</li>
+                <li id="wind-speed">-</li>
+                <li id="feature">-</li>
+            </ul>
+            <input type="text" id="city_input">
+            <button id="find_button">Find Weather by City</button>
+        </div>
+        <p class="weather-summary" id="summary"></p>
+    </div>
+
+
+    <div id="weatherLocation">
+        <div class="weather-details">
+            <ul>
+                <li id="location">-</li>
+                <li id="current-humidity">-</li>
+                <li id="current-pressure">-</li>
+                <li id="current-temperature">-</li>
+                <li id="current-wind-speed">-</li>
+                <li id="current-feature">-</li>
+            </ul>
+            <button id="getWeather" onclick="getWeather()">Get Current Weather</button>
+        </div>
+        <p class="weather-summary" id="weather-summary"></p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
