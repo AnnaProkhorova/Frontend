@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="./css/style_registration.css">
+	<link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
+	<link rel="shortcut icon" href="image.ico" type="image/x-icon">
+	<title>Вход/Регистрация</title>
+</head>
+<body>
+	<header></header>
+	<form action="" method="post" name="test" id="form">
+		<h1>Рады приветствовать Вас! Войдите или зарегистрируйтесь</h1>
+			<input type="email" name="email" placeholder="Email" id="email">
+			<div class="invalid-input" id="email_inv"></div>
+		
+			<input type="password" name="password" placeholder="Пароль" id="password">
+			<div class="invalid-input" id="password_inv"></div>
+
+			<div class="invalid-input" id="confirmation_inv"></div>
+
+			<div id="parentDiv"></div>
+
+			<div id="btn">
+				<input type="button" onclick="createConfirm()" name="submit" value="Регистрация">
+				<input type="button" onclick="validation(document.getElementById('form'))" name="submit" value="Вход">
+			</div>
+	</form>
+	<footer>&copy; 2019 Anna Prokhorova</footer>
+	<script src="./js/registration_script.js"></script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="./css/style.css">
+	<link rel="shortcut icon" href="image.ico" type="image/x-icon">
+	<link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c&display=swap" rel="stylesheet">
+	<title>Pethouse</title>
+	<script src="https://kit.fontawesome.com/af43e46f3f.js"></script>
+</head>
+<body>
+	<header>
+		<nav class="header_btn" onclick="location.href = './delivery.html';">Доставка и оплата</nav>
+		<nav class="header_btn" onclick="location.href = './registration.html';">Выход</nav>
+		<nav id="ex4">
+			<span id="cart" class="p1 fa-stack fa-2x has-badge" data-count="0" onclick="location.href = './cart.html';">
+				<i class="p3 fa fa-shopping-basket fa-stack-1x xfa-inverse" data-count="4b"></i>
+			</span>
+		</nav>
+	</header>
+	<div id="container">
+		<div id="logo"><img src="./img/logo.png"></div>
+		<div id="menu">
+				<div>Количество котиков на странице: </div>
+				<input class="menu_btn" size="5" type="text" id="countPerPage" value="20">
+				<button class="menu_btn" onclick="shop.updateCatCount(shop.currentPage)">OK</button> 
+				<button class="menu_btn" onclick="shop.priceSort(shop.cats)">Отсортировать по цене по возрастанию</button>
+				<button class="menu_btn" onclick="shop.priceSortLow(shop.cats)">Отсортировать по цене по убыванию</button>
+				<button class="menu_btn" onclick="shop.breednameSort(shop.cats)">Отсортировать по породе А-Я</button>
+				<button class="menu_btn" onclick="shop.breednameSortLow(shop.cats)">Отсортировать по породе Я-А</button>
+				<div>Выбрать желаемую породу: </div>
+				<select class="menu_btn" id="breeds" onchange="shop.filterByBreed(document.getElementById('breeds').value);">
+					<option value="all">Все породы</option>
+				</select>	
+		</div>
+		<div id="catalog">
+			<div id="json"></div>
+			<div id="products"></div>
+		</div>
+		<div class="buttons">
+			<button id="previous" class="selbutton" onclick="shop.getPreviousProducts()">&lsaquo;</button>
+			<div id="buttons"></div>
+			<button id="next" class="selbutton" onclick="shop.getNextProducts()">&rsaquo;</button>
+		</div>	
+	</div>
+	<footer><p>&copy; 2019 Anna Prokhorova</p></footer>
+    <script src="./js/script.js"></script>
+</body>
+</html>
